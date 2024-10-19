@@ -1,0 +1,10 @@
+{
+  "appId": "com.guide.ai",
+  "appName": "guide.ai",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
