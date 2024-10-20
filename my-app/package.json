@@ -13,9 +13,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/camera": "latest",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/camera": "^6.0.2",
     "@capacitor/core": "latest",
-    "@capacitor/splash-screen": "latest"
+    "@capacitor/haptics": "^6.0.1",
+    "@capacitor/ios": "^6.1.2",
+    "@capacitor/preferences": "^6.0.2",
+    "@capacitor/splash-screen": "latest",
+    "@ionic/pwa-elements": "^3.3.0",
+    "ionic": "^5.4.16"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
