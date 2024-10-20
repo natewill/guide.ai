@@ -1,5 +1,7 @@
 import OpenAI from "openai";
 import path from "path";
+import fs from "fs";
+
 
 const openai = new OpenAI();
 
@@ -14,16 +16,13 @@ async function main() {
           {
             type: "image_url",
             image_url: {
-              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
+              "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Palacio_Real%2C_%C3%81msterdam%2C_Pa%C3%ADses_Bajos%2C_2016-05-30%2C_DD_07-09_HDR.jpg",
             },
           },
         ],
       },
     ],
   });
-  console.log(response.choices[0].message.content);
-
-  const speechFile = path.resolve("./speech.mp3");
 
 
   const mp3 = await openai.audio.speech.create({
@@ -31,8 +30,11 @@ async function main() {
     voice: "alloy",
     input: response.choices[0].message.content,
   });
+  
+  const speechFile = path.resolve("./speech.mp3");
   console.log(speechFile);
   const buffer = Buffer.from(await mp3.arrayBuffer());
   await fs.promises.writeFile(speechFile, buffer);
+
 }
 main();
