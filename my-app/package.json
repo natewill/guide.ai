@@ -21,7 +21,8 @@
     "@capacitor/preferences": "^6.0.2",
     "@capacitor/splash-screen": "latest",
     "@ionic/pwa-elements": "^3.3.0",
-    "ionic": "^5.4.16"
+    "ionic": "^5.4.16",
+    "openai": "^4.68.1"
   },
   "devDependencies": {
     "@capacitor/cli": "latest",
