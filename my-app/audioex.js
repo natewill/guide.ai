@@ -10,7 +10,9 @@ const base64str = fileBuffer.toString("base64");  // Convert to base64
 
 try {
     const response = await openai.chat.completions.create({
-        model: "gpt-4",  // Correct model name for chat-based completion (no audio support)
+        model: "gpt-4o-audio-preview",  // Correct model name for chat-based completion (no audio support)
+        modalities: ["text", "audio"],
+        audio: { voice: "alloy", format: "wav" },
         messages: [
             {
                 role: "user",
@@ -23,10 +25,11 @@ try {
     });
 
     // Save the response audio file if it exists (hypothetical)
+    console.log(response.choices[0]);
     writeFileSync(
         "dog.wav",
         Buffer.from(response.choices[0].message.audio.data, 'base64'),
-        { encoding: "binary" }  // Correct binary encoding for audio
+        { encoding: "utf-8" }
     );
 } catch (error) {
     console.error("Error with OpenAI API:", error);
