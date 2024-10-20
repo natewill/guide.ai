@@ -18,6 +18,13 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+	<key>NSCameraUsageDescription</key>
+<string>We need camera access to capture photos.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>We need access to your photo library to save or retrieve photos.</string>
+
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>We need access to your photo library to save captured images.</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>

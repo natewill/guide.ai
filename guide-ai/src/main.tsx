@@ -1,53 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 const App: React.FC = () => {
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  const openCamera = async () => {
+  const takePicture = async () => {
     try {
-      // Request camera permission and open the camera
-      const permissions = await Camera.requestPermissions();
+      const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: true,
+        resultType: CameraResultType.Uri
+      });
 
-      if (permissions.camera === 'granted') {
-        const photo = await Camera.getPhoto({
-          resultType: CameraResultType.Uri, // Capture the photo as a file URI
-          source: CameraSource.Camera,     // Use the device's camera
-          quality: 100                     // Set the quality of the image
-        });
-        // Log or display the image URI
-        console.log('Photo captured:', photo.webPath);
-        const imageElement = document.getElementById('capturedImage') as HTMLImageElement;
-        if (imageElement && photo.webPath) {
-          imageElement.src = photo.webPath;
-        }
+      // image.webPath will contain a path that can be set as an image src.
+      // You can access the original file using image.path, which can be
+      // passed to the Filesystem API to read the raw data of the image,
+      // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
+      if (image.webPath) {
+        setImageUrl(image.webPath);
       } else {
-        console.error('Camera permission denied');
+        console.error('Error: image.webPath is undefined');
       }
     } catch (error) {
-      console.error('Error opening camera:', error);
+      console.error('Error taking picture:', error);
     }
   };
 
-  // Use useEffect to trigger the camera when the app loads
-  useEffect(() => {
-    openCamera();
-  }, []);
-
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>Camera App</h1>
-      <img id="capturedImage" alt="Captured Photo" style={{ width: '100%', height: 'auto' }} />
+    <div>
+      <h1>Capacitor Camera Example</h1>
+      <button onClick={takePicture}>Take Picture</button>
+      {imageUrl && <img src={imageUrl} alt="Captured" />}
     </div>
   );
 };
 
 const container = document.getElementById('root');
-const root = createRoot(container!);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-export default App;
+if (container) {
+  const root = createRoot(container);
+  root.render(<App />);
+}
