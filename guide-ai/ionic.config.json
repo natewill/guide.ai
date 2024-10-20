@@ -1,0 +1,7 @@
+{
+  "name": "guide.ai",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
