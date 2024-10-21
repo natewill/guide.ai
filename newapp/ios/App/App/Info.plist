@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>photo-gallery-capacitor-react</string>
+	<string>React Photo Gallery</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,18 +22,18 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>We need camera access to capture photos.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need access to your photo library to save captured images.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need access to your photo library to save or retrieve photos.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSMicrophoneUsageDescription</key>
+<string>This app uses the microphone to record audio.</string>
+	<key>NSCameraUsageDescription</key>
+<string>This app requires camera access to allow users to take photos or record videos for profile pictures or sharing with friends.</string>
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>This app needs access to your photo library to save images and videos that you create within the app.</string>
+<key>NSPhotoLibraryUsageDescription</key>
+<string>This app needs access to your photo library so that you can choose images and videos to share or edit.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>NSMicrophoneUsageDescription</key>
-<string>We need access to your microphone to record audio.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

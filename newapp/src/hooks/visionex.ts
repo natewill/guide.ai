@@ -8,6 +8,7 @@ const openai = new OpenAI({
 
 export async function generateSpeech(imageUrl: string): Promise<string> {
   console.log("Generating speech...");
+  console.log("Image URL:", imageUrl);
   const response = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [
@@ -18,7 +19,7 @@ export async function generateSpeech(imageUrl: string): Promise<string> {
           {
             type: "image_url",
             image_url: {
-              url: imageUrl,
+              url:  `data:image/jpeg;base64,${imageUrl}`
             },
           },
         ],
@@ -27,7 +28,6 @@ export async function generateSpeech(imageUrl: string): Promise<string> {
   });
 
   const text = response.choices[0].message.content ?? "";
-  console.log(text);
 
   // Convert text to speech using OpenAI API
   const mp3 = await openai.audio.speech.create({
@@ -38,6 +38,5 @@ export async function generateSpeech(imageUrl: string): Promise<string> {
 
   const buffer = Buffer.from(await mp3.arrayBuffer());
   const base64Audio = buffer.toString('base64');
-  console.log(base64Audio);
   return base64Audio;
 }
