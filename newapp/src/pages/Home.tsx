@@ -109,8 +109,8 @@ const Home: React.FC = () => {
           <IonTitle>Home</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent className="ion-padding">
-        <IonTitle>Bonvoy Ai</IonTitle>
+      <IonContent className="ion-padding" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <IonTitle style={{ marginBottom: '20px' }}>Bonvoy Travel Guide</IonTitle>
         {loading ? (
           <IonButton>
             <IonSpinner name="dots" />
@@ -126,6 +126,7 @@ const Home: React.FC = () => {
         )}
       </IonContent>
       <IonFab slot="fixed" vertical="bottom" horizontal="center">
+      <div style={{ display: 'flex', gap: '10px' }}>
         <IonFabButton onClick={takePicture}>
           <IonIcon icon={camera} />
         </IonFabButton>
@@ -133,6 +134,7 @@ const Home: React.FC = () => {
         <IonFabButton onClick={handleToggleRecording}>
           <IonIcon icon={mic} />
         </IonFabButton>
+        </div>
       </IonFab>
     </IonPage>
   );
