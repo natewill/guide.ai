@@ -1,3 +1,3 @@
 # guide.ai
-Get immersed in your destination
+Get immersed in your destination!
 
