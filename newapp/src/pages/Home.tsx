@@ -49,7 +49,6 @@ const Home: React.FC = () => {
   };
 
   const handleStartRecording = async () => {
-    setLoading(true);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorderRef.current = new MediaRecorder(stream);
@@ -66,6 +65,7 @@ const Home: React.FC = () => {
   };
 
   const handleStopRecording = async () => {
+    
     try {
       if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
         mediaRecorderRef.current.stop();
@@ -75,8 +75,8 @@ const Home: React.FC = () => {
 
           // Process the audio if needed
           const processedAudio = await processAudio(base64Audio);
-          setLoading(false);
           setBase64(processedAudio ?? null);
+          setLoading(false);
           audioChunksRef.current = []; // Clear the audio chunks
         };
       }
@@ -131,7 +131,10 @@ const Home: React.FC = () => {
           <IonIcon icon={camera} />
         </IonFabButton>
 
-        <IonFabButton onClick={handleToggleRecording}>
+        <IonFabButton
+            onClick={handleToggleRecording}
+            color={isRecording ? 'dark' : 'primary'}
+          >
           <IonIcon icon={mic} />
         </IonFabButton>
         </div>

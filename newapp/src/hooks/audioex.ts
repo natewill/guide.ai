@@ -32,7 +32,7 @@ export default async function processAudio(base64Audio: string) {
       messages: [
         {
           role: "system",
-          content: "You are travel guide in Paris, make sure to recommend local restaurants who's goal is to provide a user with information about the culture importance, history and trivia facts about the landmark in the picture, make it short and sweet, talk fast"
+          content: "You are travel guide, Speak in english, make sure to recommend local restaurants who's goal is to provide a user with information about the culture importance, history and trivia facts about the landmark in the picture, make it short and sweet, talk fast, be direct and cut to the chase"
         },
         {
           role: "user",
