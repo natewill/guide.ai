@@ -1,4 +1,6 @@
 # guide.ai
+Made by Nate Williams, Sierra Harrison, and Jamie Osmena
+
 Get immersed in your destination!
 
 Watch video: https://youtu.be/8zgEzjqq35A
